@@ -1,0 +1,8 @@
+interface:
+  display_name: "AI 双周会汇报"
+  short_description: "把计划、进展、证据和下一步整理成深色科技风双周会汇报"
+  brand_color: "#00F58A"
+  default_prompt: "使用 $ai-biweekly-report 将这份计划和本期进展整理成 AI 双周会汇报。"
+
+policy:
+  allow_implicit_invocation: true
