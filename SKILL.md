@@ -7,6 +7,25 @@ description: Use when users need to turn AI project plans, fortnightly progress,
 
 将计划、进展和证据组织成深色科技风双周会长页。核心不是罗列任务，而是回答四个问题：目标是否变化、本期推进了什么、有什么证据、下一周期验证什么。
 
+## 输入契约与证据口径
+
+开始前，将素材整理为下列最小输入；信息缺失不阻塞生成，但必须标为“待采集 / 待确认”，不能补造事实。
+
+```text
+period：汇报周期
+ audience：management | project-team | mixed（默认 mixed）
+ conclusion：本期一句话结论
+ northStar：北极星目标 / 当前阶段
+ progress[]：动作、产出、证据链接或截图、状态（DONE / VERIFY / NEXT）
+ metrics[]：目标值、当前值、统计截止日期、数据来源、验证状态
+ tradeoffs[]：问题、判断、取舍
+ nextActions[]：下期动作、交付物、验收口径
+```
+
+- `management` 优先结论、风险、资源诉求和阶段门槛；`project-team` 保留方法、证据和执行细节。
+- 无真实数据时只写“待采集基线 / 验证中”，并写清下一次采集或验证动作。
+
+
 ## 执行流程
 
 1. 读取用户的计划、历史汇报、截图和相关 Skill。把信息分成：年度目标、本期动作、交付证据、问题判断、下期动作。
