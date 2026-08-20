@@ -1,11 +1,11 @@
 ---
 name: ai-biweekly-report
-description: Use when users need to turn AI project plans, fortnightly progress, design-system work, workflow experiments, validation evidence, blockers, or next actions into a Chinese AI biweekly design report, dark technology-style long-page HTML, or editable Figma-ready presentation.
+description: Use when users need to turn AI project plans, fortnightly progress, design-system work, workflow experiments, validation evidence, blockers, or next actions into a Chinese AI biweekly design report, fixed 1920x1080 dark technology-style HTML slides, or editable Figma-ready presentation.
 ---
 
 # AI 双周会设计汇报
 
-将计划、进展和证据组织成深色科技风双周会长页。核心不是罗列任务，而是回答四个问题：目标是否变化、本期推进了什么、有什么证据、下一周期验证什么。
+将计划、进展和证据组织成深色科技风双周会页面。核心不是罗列任务，而是回答四个问题：目标是否变化、本期推进了什么、有什么证据、下一周期验证什么。
 
 ## 输入契约与证据口径
 
@@ -40,8 +40,8 @@ period：汇报周期
    - 下个双周动作
    - 本期结论
 4. 根据内容选模块。详细规则见 [内容与模块映射](references/content-mapping.md)。
-5. 使用 [视觉与绘图规范](references/style-system.md)，从 [HTML 模板](assets/template.html) 复制并替换内容。页面根节点固定宽 `1440px`，允许随内容纵向增长。每张指标卡、进展卡、证据卡和下一步卡都添加唯一的 `data-figma-block`，名称使用可读中文。
-6. 在浏览器中检查桌面和缩小视图；确认无文字溢出、重叠、空占位和虚假数字。
+5. 使用 [视觉与绘图规范](references/style-system.md)，从 [HTML 模板](assets/template.html) 复制并替换内容。每个 `.page` 必须固定为 `1920px × 1080px`，内容超出时拆成下一页，禁止纵向增长。每张指标卡、进展卡、证据卡和下一步卡都添加唯一的 `data-figma-block`，名称使用可读中文。
+6. 在浏览器中逐页检查 `1920 × 1080` 画面；确认根节点尺寸准确，且无文字溢出、重叠、空占位和虚假数字。
 7. 用户要求导入 Figma 时，再调用 `html-to-figma-fidelity`，保持 `章节 → 内容块 → 图形/图片/文本` 分组。
 
 ## 写作规则
@@ -63,6 +63,11 @@ period：汇报周期
 
 ## 强制视觉规则
 
+- 每页尺寸必须为 `1920 × 1080`，一页只表达一个核心结论；多项主题拆页，不制作汇报长页。
+- 页面安全边距建议左右 `80px`、上下 `64px`；页内有效内容高度不得超过 `952px`。
+- Figma 文字节点禁止出现 `height=1px`。单行文字节点高度必须等于 `fontSize + 8px`；多行文字必须使用 `lineHeight = fontSize * 1.6`，并在写入文字后重新计算节点高度。
+- 内容卡片的内容安全间距默认上/下/左 `24px`；右侧间距不得小于 `24px`，可根据字数、列宽和视觉重心增加到 `28–40px`，但不能让正文贴近边框。
+- 三等分卡片、三阶段卡、三张下一步卡之间的水平间距固定优先使用 `32px`。如果版式必须使用更大空隙，空隙必须承载坐标线、连接线、编号、状态刻度或其他信息型装饰，禁止出现无意义大空白。
 - 近黑底，不使用大面积彩色渐变；绿色是主线，不是全页填色。
 - 紫色只表示工程化/生成能力，青色表示验证/连接，橙色表示风险/下一阶段。
 - 卡片圆角 `8px`，大容器不超过 `12px`；细描边优先于阴影。
@@ -80,6 +85,10 @@ period：汇报周期
 - 是否保持黑/绿主线，并用紫、青、橙承担固定语义？
 - 页面是否无 `XX%`、`xx月xx日`、Lorem 或未解释占位符？
 - 若缺数据，是否明确显示“待采集基线”而非伪造数字？
+- 每个页面根节点是否严格为 `1920 × 1080`，且没有依赖滚动才能看到的内容？
+- Figma 文本节点是否没有 `height=1px`，单行高度是否为字号 + 8px，多行行高是否为 1.6 倍？
+- 内容卡片上/下/左是否为 24px，右侧是否根据画面自动调整且不小于 24px？
+- 三卡布局是否优先 32px 间距；若存在大空白，是否被信息型装饰或连接关系使用？
 
 ## 与其他 Skill 配合
 
