@@ -49,11 +49,31 @@
 - 卡片圆角 8px，大章节圆角 16px。禁止 24px 以上软萌圆角。
 - 描边 1px，强调模块可用 2px；阴影只用于主目标框，且必须弱。
 
+## 标准 Layout 规则
+
+所有版本都必须先有标准 `Layout Profile`，再填内容。`Layout Profile` 是页面骨架，不是视觉风格；普通版、浓缩版、厚实版都必须遵守。
+
+- 生成前先声明页型：`single-focus`、`two-column`、`three-card-matrix`、`timeline-evidence`、`feedback-loop`、`cover-summary` 等；没有合适页型时，先定义一次性的布局契约再生成。
+- 每页必须固定 `Header / Main / Footer`：`Header` 承载眉题、主标题、副标题和状态；`Main` 承载主体模块；`Footer` 承载结论和页码。不要让正文、卡片、页码直接散落在 `Root` 下。
+- `Layout Profile` 必须写清：页面尺寸、版心、安全边距、主体起止 y、列宽/行高、模块数量、主次模块比例、卡片间距、页脚右边界。
+- 同一页内部只使用一种主布局：左右分栏、上中下分层、三卡网格、时间线加证据区等。不要一边用网格，一边自由手摆卡片，导致节奏不统一。
+- 内容放不下时换 `Layout Profile` 或拆页，不能靠压缩卡片间距、缩小字号、把内容贴到页脚来硬塞。
+- 生成完成后必须按 `Layout Profile` 回读：检查模块是否落在预期列/行，主模块是否对齐，页脚是否一致；失败先修布局，再修单个文字框。
+
+### 常用 Layout Profile
+
+- `single-focus`：`Header` + 一张主模块 + 可选侧栏，适合讲一个核心判断或一个复杂方案。
+- `two-column`：左侧证据/流程约 60%，右侧洞察/指标约 40%，中间间距 `32px`，适合判断加支撑。
+- `three-card-matrix`：顶部三张同级卡，底部一张全宽矩阵/表格，适合方法、规则、架构拆解。
+- `timeline-evidence`：顶部阶段时间线，中部证据或清单卡，底部路径条，适合阶段推进和复盘。
+- `feedback-loop`：主区域展示反馈问题或体验入口，低权重区域展示后续处理动作；不同语义不能并列成同级卡片。
+- `cover-summary`：大结论 + 少量指标/路径，不超过 3 个辅助模块，适合封面或三页浓缩版首屏。
+
 ## Figma 原生布局结构
 
 生成或整理到 Figma 时，目标不是只还原视觉，而是交付可编辑的原生布局。每个语义模块必须能被设计师一键选中、移动、复用和替换内容。
 
-- 页面根节点必须是 `Root Report Frame`，固定 `1920 × 1080`，使用垂直 Auto Layout 承载 `Header / Main / Footer`。页内安全边距仍按 `80px / 64px` 控制。
+- 页面根节点必须是 `Root Report Frame`，固定 `1920 × 1080`，使用垂直 Auto Layout 承载 `Header / Main / Footer`，并在图层命名或说明中体现所选 `Layout Profile`。页内安全边距仍按 `80px / 64px` 控制。
 - `Header`、`Main`、`Footer`、`Section`、`Module`、`Card`、`MetricCard`、`EvidenceCard`、`NextActionCard`、`TagGroup`、`FlowStep` 都必须是 Auto Layout Frame，不要用普通 Frame 加一堆绝对定位子元素拼出来。
 - 同一内容块的背景、描边、标题、正文、编号、状态标签、图标和辅助说明必须放在同一个 Auto Layout Frame 内。不能把背景矩形放在卡片外面，也不能让文字直接散落在页面 Root 下。
 - 卡片默认垂直 Auto Layout：`paddingTop=24`、`paddingLeft=24`、`paddingBottom=24`、`paddingRight=32–40`，`itemSpacing=16–24`。卡片宽高可固定，但内部文字和标签必须由 Auto Layout 排列。
