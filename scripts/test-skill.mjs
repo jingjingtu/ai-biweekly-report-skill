@@ -12,6 +12,30 @@ const skillPath = path.join(skillDirectory, 'SKILL.md');
 const content = fs.readFileSync(skillPath, 'utf8');
 const errors = [];
 
+const visualReferences = [
+  ['assets/visual-references/other-team/01-strategy-progress.png', 1920, 6251],
+  ['assets/visual-references/other-team/02-capability-roadmap.png', 1920, 6667],
+  ['assets/visual-references/other-team/03-capability-system.png', 1920, 8919],
+  ['assets/visual-references/other-team/04-portfolio-operations.png', 1920, 9245],
+  ['assets/visual-references/other-team/05-b-end-transformation.png', 1920, 10004],
+  ['assets/visual-references/b-end-history/01-background.png', 1920, 13327],
+  ['assets/visual-references/b-end-history/02-experiment-loop.png', 1920, 10654],
+  ['assets/visual-references/b-end-history/03-system-overview.png', 1920, 8925],
+  ['assets/visual-references/b-end-history/04-skill-architecture.png', 1920, 7189],
+  ['assets/visual-references/b-end-history/05-monthly-validation.png', 1920, 13327],
+  ['assets/visual-references/b-end-history/06-cross-platform.png', 1920, 11038],
+  ['assets/visual-references/b-end-history/07-content-area.png', 1920, 12841]
+];
+
+function readPngDimensions(filePath) {
+  const buffer = fs.readFileSync(filePath);
+  const signature = buffer.subarray(0, 8).toString('hex');
+  if (signature !== '89504e470d0a1a0a' || buffer.subarray(12, 16).toString('ascii') !== 'IHDR') {
+    throw new Error('not a valid PNG');
+  }
+  return [buffer.readUInt32BE(16), buffer.readUInt32BE(20)];
+}
+
 const frontmatter = content.match(/^---\n([\s\S]*?)\n---/);
 if (!frontmatter) {
   errors.push('SKILL.md frontmatter is missing');
@@ -27,6 +51,22 @@ if (!frontmatter) {
 }
 
 if (/^\s*\[TODO:[^\]]*\]\s*$/m.test(content)) errors.push('unfinished TODO placeholder found');
+
+visualReferences.forEach(([relativePath, expectedWidth, expectedHeight]) => {
+  const filePath = path.join(skillDirectory, relativePath);
+  if (!fs.existsSync(filePath)) {
+    errors.push('missing visual reference: ' + relativePath);
+    return;
+  }
+  try {
+    const [width, height] = readPngDimensions(filePath);
+    if (width !== expectedWidth || height !== expectedHeight) {
+      errors.push('visual reference dimensions changed: ' + relativePath + ' expected ' + expectedWidth + 'x' + expectedHeight + ', got ' + width + 'x' + height);
+    }
+  } catch (error) {
+    errors.push('invalid visual reference ' + relativePath + ': ' + error.message);
+  }
+});
 
 function markdownFiles(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -133,6 +173,21 @@ const invalidMetricValidation = spawnSync(process.execPath, [
 ], { encoding: 'utf8' });
 if (invalidMetricValidation.status === 0) {
   console.error('Error: invalid actual metric unexpectedly passed validation');
+  process.exit(1);
+}
+
+const undersizedTextPath = path.join(temporaryDirectory, 'undersized-text.html');
+fs.writeFileSync(
+  undersizedTextPath,
+  html.replace('font-size: 24px;', 'font-size: 23px;'),
+  'utf8'
+);
+const undersizedTextValidation = spawnSync(process.execPath, [
+  path.join(scriptDirectory, 'validate-report.mjs'),
+  undersizedTextPath
+], { encoding: 'utf8' });
+if (undersizedTextValidation.status === 0) {
+  console.error('Error: 23px visible text unexpectedly passed validation');
   process.exit(1);
 }
 

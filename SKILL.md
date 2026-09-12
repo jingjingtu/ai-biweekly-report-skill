@@ -38,7 +38,7 @@ description: Create Chinese AI design-team biweekly reports from plans, progress
 1. **规范化输入**：整理周期、听众、汇报目的、决策诉求、本期变化、证据、风险和下一步。不要补造事实。
 2. **形成结论**：先写一句本期判断，再组织支撑证据。标题描述“发生了什么变化”，不写任务名堆叠。
 3. **选择内容逻辑**：任务涉及 B 端组件、页面模式、平台适配、Skill 或生成能力验证时，读取 [B 端历史汇报内容标准](references/b-end-content-standard.md)，默认使用 `narrativeMode: b-end-validation`。它决定结论与章节顺序。
-4. **匹配视觉标准**：用户给出视觉样例或要求“按标准样例”时，读取 [视觉样例审查](references/sample-standard.md)，记录 `format`、`sampleArchetype`、复用形式和不可照搬项。视觉样例不能改写 B 端内容逻辑。
+4. **匹配视觉标准**：用户给出视觉样例或要求“按标准样例”时，读取 [视觉样例审查](references/sample-standard.md) 和 [原始视觉参考索引](references/visual-reference-index.md)，逐张审查与当前内容最接近的原图，记录 `format`、`sampleArchetype`、复用形式、装饰语法和不可照搬项。不能只凭对样例的文字摘要生成，也不能让视觉样例改写 B 端内容逻辑。
 5. **规划页面/章节**：依据 [内容与模块映射](references/content-mapping.md) 选择页数或长卷章节、页面结论和 Layout Profile。用户提供多种版式样例或长卷包含 4 个以上主要章节时，先按 [视觉规范的版式多样性门禁](references/style-system.md#版式多样性门禁) 形成 `sectionLayoutPlan`，再开始渲染或写入 Figma；不能先复制统一骨架再换标题和颜色。年度指标、截图或路线图只在材料真实存在且有助于叙事时使用。
 6. **生成内容**：普通进展使用“动作 → 产出 → 证据 → 意义”；B 端验证使用“问题 → 根因 → 规则 → 复验 → 沉淀”。下一步写清负责人、期限、交付物或验收口径。
 7. **生成 HTML**：读取 [HTML 输出规范](references/html-output.md)，优先使用 `scripts/render-report.mjs` 从结构化 JSON 生成页面，再运行 `scripts/validate-report.mjs`。
@@ -63,7 +63,9 @@ description: Create Chinese AI design-team biweekly reports from plans, progress
 - B 端验证汇报优先使用“本期变化 → 问题证据 → 根因判断 → 规则化解决 → 复验 → 能力沉淀 → 下一步”，不以完成清单代替结论。
 - 观众要做的事与团队内部处理动作不能做成同级卡片。
 - 主色表达内容类别：绿色为主线，紫色为工程化/生成能力，青色为验证/连接，橙色为风险/下一阶段。完成状态使用独立状态标签，不依赖颜色。
-- `slides` 页面固定 1920 × 1080；`long-scroll` 固定 1920px 宽并按章节自然增高。叙事文字不小于 24px；内容放不下时拆页、拆章节或换 Layout Profile。
+- `slides` 页面固定 1920 × 1080；`long-scroll` 固定 1920px 宽并按章节自然增高。所有可见文字（包括眉题、标签、图注、状态和页脚）均不得小于 24px；内容放不下时拆页、拆章节或换 Layout Profile。
+- 用户要求长图时，交付物必须是一整块连续的根画布/根 Frame；小节是根画布内连续排列的可编辑章节，每节保留 48px 以上大标题、正文和证据区，不能重新拼成彼此分离的页面。
+- 视觉丰富度来自内容驱动的构图变化、证据载体和克制装饰，不来自重复卡片、随机光球或无意义图形。每个长卷章节都要按 [视觉规范](references/style-system.md#克制的装饰与丰富度) 选择装饰语法并与相邻章节形成明显差异。
 - 视觉细节、布局和 Figma 节点规则分别见 [视觉规范](references/style-system.md) 与 [Figma 输出规范](references/figma-output.md)。
 
 ## 自包含与可选能力
@@ -78,4 +80,5 @@ description: Create Chinese AI design-team biweekly reports from plans, progress
 - HTML 中每个主要内容块拥有唯一、可读的 `data-figma-block`。
 - 页面尺寸、字号、页码、颜色语义、溢出和重复标识通过校验。
 - B 端任务已记录 `narrativeMode` 和历史内容样例依据；使用视觉样例时已记录 `format`、`sampleArchetype`，且未复用无来源的案例数字或品牌资产。
+- 长卷为单一连续根画布，章节大标题清楚；所有可见文字不小于 24px；版式多样性和装饰丰富度均通过门禁。
 - Figma 输出存在时，主要模块为可编辑 Auto Layout 结构，而非散落元素。

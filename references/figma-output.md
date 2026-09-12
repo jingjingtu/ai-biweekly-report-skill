@@ -4,8 +4,9 @@
 
 ## 原生结构
 
-- 页面根节点：`Root Report Frame / <主题> / 01`，固定 1920 × 1080。
-- 根节点使用垂直 Auto Layout，包含 `Header`、`Main`、`Footer`。
+- `slides` 页面根节点：`Root Report Frame / <主题> / 01`，固定 1920 × 1080。
+- `long-scroll` 只有一个根节点：`Root Report Frame / <主题> / Long Scroll`，固定宽 1920px、高度按所有章节总和自适应。它使用垂直 Auto Layout、`itemSpacing=0`，所有章节直接位于根节点内，不能把独立画板摆在 Section 中冒充一整块长图。
+- `slides` 根节点包含 `Header`、`Main`、`Footer`；`long-scroll` 的每个章节是独立可编辑 Auto Layout Frame，节点名称体现布局职责并包含章节大标题与内容区。
 - `Section`、`Module`、`Card`、`MetricCard`、`EvidenceCard`、`NextActionCard`、`TagGroup` 和 `FlowStep` 使用 Auto Layout Frame。
 - 背景、描边、标题、正文、编号、状态和图标必须位于同一语义模块内。
 - 只有点阵背景、跨模块连接线、遮罩和坐标线允许绝对定位，并命名为 `Overlay / ...`、`Connector / ...` 或 `Grid / ...`。
@@ -22,7 +23,7 @@
 ## 文字节点
 
 - 先加载字体，再设置 characters、fontSize 和 lineHeight，最后设置宽高。
-- 叙事文字不小于 24px。
+- 所有可见文字都不小于 24px，包括眉题、状态、图注、编号、坐标和页脚；长卷章节大标题不小于 48px。
 - 单行文字高度至少为 `fontSize + 8px`。
 - 多行正文使用约 `fontSize × 1.6` 的行高并给足节点高度。
 - 不允许 `height <= 1.5px` 的文字节点。
@@ -36,9 +37,11 @@
 ## 交付前节点 QA
 
 - Root 下没有大量直接散落的 TEXT、RECTANGLE 或 LINE。
-- 所有内容位于 1920 × 1080 画面内。
+- `slides` 所有内容位于 1920 × 1080 画面内；`long-scroll` 所有内容位于单一 1920px 宽根 Frame 内，章节连续且没有缝隙。
 - 卡片、标签组和流程组可一键选中移动。
 - 标签文字填满容器并居中。
 - 页头状态与页脚页码右边界一致。
 - 页码完整且总页数一致。
+- 所有文字节点 `fontSize >= 24`，长卷章节标题 `fontSize >= 48`。
+- 每章至少有一个主视觉锚点和一种结构型或证据型装饰；相邻章节的标题位置、分栏、证据载体与装饰组合不完全相同。
 - 截图观感与节点结构均通过后才可宣布完成。

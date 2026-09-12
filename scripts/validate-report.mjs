@@ -72,10 +72,7 @@ if (/\bXX%\b/i.test(html)) errors.push('XX% placeholder found');
 if (/xx月xx日/i.test(html)) errors.push('date placeholder found');
 
 const fontSizes = [...html.matchAll(/font-size:\s*(\d+)px/g)].map((match) => Number(match[1]));
-if (fontSizes.some((size) => size < 20)) errors.push('font size below 20px found');
-if (fontSizes.some((size) => size >= 20 && size < 24)) {
-  warnings.push('20–23px font found; confirm it is used only for a non-narrative status label');
-}
+if (fontSizes.some((size) => size < 24)) errors.push('visible font size below 24px found');
 
 const actualMetrics = [...html.matchAll(/<article class="metric"[^>]*data-metric-kind="actual"[^>]*>/g)].map((match) => match[0]);
 actualMetrics.forEach((tag, index) => {
