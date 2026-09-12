@@ -7,6 +7,7 @@
 - `slides` 页面根节点：`Root Report Frame / <主题> / 01`，固定 1920 × 1080。
 - `long-scroll` 只有一个根节点：`Root Report Frame / <主题> / Long Scroll`，固定宽 1920px、高度按所有章节总和自适应。它使用垂直 Auto Layout、`itemSpacing=0`，所有章节直接位于根节点内，不能把独立画板摆在 Section 中冒充一整块长图。
 - `slides` 根节点包含 `Header`、`Main`、`Footer`；`long-scroll` 的每个章节是独立可编辑 Auto Layout Frame，节点名称体现布局职责并包含章节大标题与内容区。
+- 使用用户 B 端历史稿样式时，每个章节使用同名 `Header / Left Aligned`，其眉题、`Section Title`、说明和一级内容容器绝对 `x` 坐标一致；默认均为根 Frame 内的 `x=80`。
 - `Section`、`Module`、`Card`、`MetricCard`、`EvidenceCard`、`NextActionCard`、`TagGroup` 和 `FlowStep` 使用 Auto Layout Frame。
 - 背景、描边、标题、正文、编号、状态和图标必须位于同一语义模块内。
 - 只有点阵背景、跨模块连接线、遮罩和坐标线允许绝对定位，并命名为 `Overlay / ...`、`Connector / ...` 或 `Grid / ...`。
@@ -43,5 +44,7 @@
 - 页头状态与页脚页码右边界一致。
 - 页码完整且总页数一致。
 - 所有文字节点 `fontSize >= 24`，长卷章节标题 `fontSize >= 48`。
-- 每章至少有一个主视觉锚点和一种结构型或证据型装饰；相邻章节的标题位置、分栏、证据载体与装饰组合不完全相同。
+- 每章至少有一个主视觉锚点和一种结构型或证据型装饰；相邻章节的内容分栏、证据载体与装饰组合不完全相同，标题系统保持稳定。
+- 汇总所有 `Section Title` 的绝对 `x` 坐标并去重；用户 B 端历史稿样式下结果必须只有一个值。章节标题 `textAlignHorizontal` 必须为 `LEFT`。
+- 检查同级模块的绝对边界：共享网格的左/右边线必须完全一致，等列宽差值不超过 1px，状态标签右边线一致；不能只凭截图目测。
 - 截图观感与节点结构均通过后才可宣布完成。

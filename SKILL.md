@@ -66,6 +66,7 @@ description: Create Chinese AI design-team biweekly reports from plans, progress
 - `slides` 页面固定 1920 × 1080；`long-scroll` 固定 1920px 宽并按章节自然增高。所有可见文字（包括眉题、标签、图注、状态和页脚）均不得小于 24px；内容放不下时拆页、拆章节或换 Layout Profile。
 - 用户要求长图时，交付物必须是一整块连续的根画布/根 Frame；小节是根画布内连续排列的可编辑章节，每节保留 48px 以上大标题、正文和证据区，不能重新拼成彼此分离的页面。
 - 视觉丰富度来自内容驱动的构图变化、证据载体和克制装饰，不来自重复卡片、随机光球或无意义图形。每个长卷章节都要按 [视觉规范](references/style-system.md#克制的装饰与丰富度) 选择装饰语法并与相邻章节形成明显差异。
+- 使用用户 B 端历史样例时，所有章节眉题、标题、说明和主内容必须共享同一条左侧基线，标题统一左对齐。版式变化发生在标题下方的内容区，不能用标题居中、右移或漂浮制造变化。
 - 视觉细节、布局和 Figma 节点规则分别见 [视觉规范](references/style-system.md) 与 [Figma 输出规范](references/figma-output.md)。
 
 ## 自包含与可选能力
@@ -80,5 +81,5 @@ description: Create Chinese AI design-team biweekly reports from plans, progress
 - HTML 中每个主要内容块拥有唯一、可读的 `data-figma-block`。
 - 页面尺寸、字号、页码、颜色语义、溢出和重复标识通过校验。
 - B 端任务已记录 `narrativeMode` 和历史内容样例依据；使用视觉样例时已记录 `format`、`sampleArchetype`，且未复用无来源的案例数字或品牌资产。
-- 长卷为单一连续根画布，章节大标题清楚；所有可见文字不小于 24px；版式多样性和装饰丰富度均通过门禁。
+- 长卷为单一连续根画布，章节大标题清楚且共享左侧基线；所有可见文字不小于 24px；版式多样性、对齐和装饰丰富度均通过门禁。
 - Figma 输出存在时，主要模块为可编辑 Auto Layout 结构，而非散落元素。
