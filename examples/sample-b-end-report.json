@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "period": "2026.09.01–09.14",
+    "audience": "mixed",
+    "reportGoal": "同步列表页 Skill 的跨平台验证结果并确定下一轮边界",
+    "decisionNeeded": "是否进入第二类页面模式验证",
+    "outputMode": "html",
+    "format": "long-scroll",
+    "narrativeMode": "b-end-validation",
+    "sampleArchetype": "b-end-transformation",
+    "referenceSamples": [
+      "本月验证进展.png",
+      "跨设备与平台补全.png"
+    ],
+    "pageBudget": 8,
+    "brandName": "AI Design",
+    "brandColor": "#00F58A",
+    "eyebrow": "AI Design / b-end-validation.md",
+    "currentStage": "VERIFY",
+    "footerLeft": "B 端 AI 设计能力"
+  },
+  "title": "从单点生成，推进到跨平台规则复验",
+  "subtitle": "本轮不只验证页面能否生成，还验证组件调用和验收规则能否跨环境复用。",
+  "conclusion": "生成链路已经可运行，当前门槛转向组件调用规则与平台差异的稳定隔离。",
+  "northStar": "让高频 B 端页面形成可复用、可验证的 AI 生成能力",
+  "metrics": [
+    {
+      "label": "已复验页面模式",
+      "value": "2 类",
+      "kind": "actual",
+      "asOf": "2026-09-12",
+      "source": "页面模式复验记录",
+      "status": "VERIFY"
+    }
+  ],
+  "problemFindings": [
+    {
+      "title": "组件可识别但未被正确调用",
+      "context": "同一列表页 Skill 在第二个平台环境中运行",
+      "symptom": "页面结构生成成功，但 Slot 与组件封装不一致",
+      "evidence": "跨平台回归截图与错误记录",
+      "impact": "无法把单点成功视为稳定复用",
+      "rootCause": "通用页面规则与平台组件实现耦合，验收门禁未覆盖组件调用",
+      "status": "VERIFY"
+    }
+  ],
+  "ruleChanges": [
+    {
+      "title": "拆分通用页面规则与平台适配配置",
+      "problem": "平台差异混入页面生成逻辑",
+      "rule": "通用层描述页面结构，平台层负责组件映射与属性差异",
+      "implementation": "新增 Platform Profile 与组件调用检查",
+      "acceptance": "同一页面配置在两个平台通过结构与组件验收",
+      "evidence": "配置文件和检查记录",
+      "status": "DONE"
+    }
+  ],
+  "validationRounds": [
+    {
+      "title": "第二平台复验",
+      "scope": "列表页基础态与筛选态",
+      "hypothesis": "平台配置可以隔离组件差异",
+      "result": "页面结构通过，组件映射仍有一项待修复",
+      "failure": "复杂 Slot 尚未覆盖",
+      "newRule": "将 Slot 约束加入组件验收门禁",
+      "evidence": "复验记录 2026-09-12",
+      "status": "VERIFY"
+    }
+  ],
+  "reusableAssets": [
+    {
+      "name": "列表页通用页面契约",
+      "type": "Page Contract",
+      "scope": "基础列表页与筛选列表页",
+      "entry": "skills/b-end-list-page",
+      "evidence": "契约文件与回归用例",
+      "status": "VERIFY"
+    }
+  ],
+  "asks": [
+    {
+      "title": "提供一个第二类真实页面作为下一轮样本"
+    }
+  ],
+  "nextActions": [
+    {
+      "title": "补齐复杂 Slot 验收",
+      "deliverable": "新增组件调用规则与失败用例",
+      "acceptance": "两个平台的复杂 Slot 回归全部通过",
+      "owner": "B 端设计系统小组",
+      "dueDate": "2026-09-26",
+      "status": "NEXT",
+      "tone": "validation"
+    }
+  ]
+}

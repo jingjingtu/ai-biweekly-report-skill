@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "period": "2026.09.01–09.14",
+    "audience": "mixed",
+    "reportGoal": "同步生成链路验证结果并确定下期优先级",
+    "decisionNeeded": "是否进入两个真实项目试点",
+    "outputMode": "html",
+    "format": "slides",
+    "narrativeMode": "status-summary",
+    "pageBudget": 4,
+    "brandName": "AI Design",
+    "brandColor": "#00F58A",
+    "eyebrow": "AI Design / biweekly.md",
+    "currentStage": "VERIFY",
+    "footerLeft": "AI 设计专项"
+  },
+  "title": "从样板生成，推进到真实项目验证",
+  "subtitle": "本期完成生成链路，下一步验证复用质量和边界。",
+  "conclusion": "生成能力已经可运行，但尚未形成真实项目中的稳定复用证据。",
+  "northStar": "让高频设计工作形成可复用、可验证的 AI 协作能力",
+  "metrics": [
+    {
+      "label": "真实项目覆盖",
+      "value": "2 个",
+      "kind": "target",
+      "status": "NEXT"
+    },
+    {
+      "label": "已验证页面",
+      "value": "3 页",
+      "kind": "actual",
+      "asOf": "2026-09-12",
+      "source": "页面验收记录",
+      "status": "DONE"
+    }
+  ],
+  "progress": [
+    {
+      "title": "完成内容契约",
+      "action": "梳理汇报字段和证据口径",
+      "output": "结构化输入定义",
+      "evidence": "references/input-contract.md",
+      "meaning": "降低遗漏和虚构数字风险",
+      "status": "DONE",
+      "tone": "engineering"
+    },
+    {
+      "title": "建立 HTML 骨架",
+      "action": "实现固定画布和语义内容块",
+      "output": "可渲染模板",
+      "evidence": "assets/template.html",
+      "meaning": "保证多页视觉结构一致",
+      "status": "VERIFY",
+      "tone": "validation"
+    },
+    {
+      "title": "<特殊字符> 已安全处理",
+      "action": "统一转义用户文本",
+      "output": "安全文本节点",
+      "evidence": "scripts/render-report.mjs",
+      "meaning": "避免输入破坏 HTML 结构",
+      "status": "DONE",
+      "tone": "engineering"
+    }
+  ],
+  "risks": [
+    {
+      "title": "真实场景样本仍少",
+      "body": "当前结论不能外推到所有项目类型。",
+      "impact": "复用范围仍待验证",
+      "owner": "设计系统小组",
+      "status": "VERIFY",
+      "tone": "risk"
+    }
+  ],
+  "asks": [
+    {
+      "title": "提供 2 个真实项目作为试点"
+    }
+  ],
+  "nextActions": [
+    {
+      "title": "进入真实项目试点",
+      "deliverable": "完成 2 个真实页面并记录返工原因",
+      "acceptance": "页面通过设计验收并形成问题清单",
+      "owner": "设计系统小组",
+      "dueDate": "2026-09-26",
+      "status": "NEXT",
+      "tone": "validation"
+    }
+  ]
+}
