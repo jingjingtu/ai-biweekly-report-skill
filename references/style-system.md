@@ -59,6 +59,27 @@
 
 生成前先确定 Layout Profile。单页只使用一种主布局；内容放不下时换版式或拆页。
 
+## 版式多样性门禁
+
+当用户提供了多种版式样例、明确要求版式变化，或 `long-scroll` 含 4 个以上主要章节时，生成前必须记录 `sectionLayoutPlan`：
+
+```yaml
+- section: <章节名>
+  layoutProfile: <本章主布局>
+  visualAnchor: <大标题 / 主证据 / 对照 / 路线 / 账本等>
+  evidenceForm: <截图 / 数字 / 规则 / 流程 / 状态>
+  differsFromPrevious: <结构差异说明>
+```
+
+- 4 个以上主要章节至少采用 3 种与内容匹配的 Layout Profile；材料只支持单一结构时可以减少，但必须在交付说明原因。
+- 相邻主要章节不得重复相同的“标题位置 + 主体分栏 + 卡片数量 + 结论条”骨架。
+- 改颜色、改标题、交换卡片文案或把三卡改成四卡，不算版式变化。
+- 版式变化应来自内容关系：总结用非对称主视觉，过程变化用 `before-after`，依赖与阶段用 `timeline-evidence`，故障推演用诊断剖面或 `feedback-loop`，验证结果用账本/清单，下一步用里程碑。
+- 连续长卷只统一色彩、字体、边距和状态语义；章节标题位置、视觉重心、分栏比例和证据承载方式允许变化。
+- Figma 节点命名应体现实际布局职责，例如 `Hero / Asymmetric`、`Compare / Old and New`、`Roadmap / Ladder and Lanes`，不能所有章节都只叫 `Header / Main / Footer`。
+
+推荐的 `b-end-transformation` 长卷组合是：`cover-summary` → `before-after` → `timeline-evidence` 或平台路线 → 诊断剖面/`feedback-loop` → 验证账本与里程碑。它是选择示例，不是固定五段模板；应随当前证据删减或替换。
+
 ## 信息密度
 
 - 留白用于分组、节奏和聚焦，不追求“填满页面”。

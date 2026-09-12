@@ -39,7 +39,7 @@ description: Create Chinese AI design-team biweekly reports from plans, progress
 2. **形成结论**：先写一句本期判断，再组织支撑证据。标题描述“发生了什么变化”，不写任务名堆叠。
 3. **选择内容逻辑**：任务涉及 B 端组件、页面模式、平台适配、Skill 或生成能力验证时，读取 [B 端历史汇报内容标准](references/b-end-content-standard.md)，默认使用 `narrativeMode: b-end-validation`。它决定结论与章节顺序。
 4. **匹配视觉标准**：用户给出视觉样例或要求“按标准样例”时，读取 [视觉样例审查](references/sample-standard.md)，记录 `format`、`sampleArchetype`、复用形式和不可照搬项。视觉样例不能改写 B 端内容逻辑。
-5. **规划页面/章节**：依据 [内容与模块映射](references/content-mapping.md) 选择页数或长卷章节、页面结论和 Layout Profile。年度指标、截图或路线图只在材料真实存在且有助于叙事时使用。
+5. **规划页面/章节**：依据 [内容与模块映射](references/content-mapping.md) 选择页数或长卷章节、页面结论和 Layout Profile。用户提供多种版式样例或长卷包含 4 个以上主要章节时，先按 [视觉规范的版式多样性门禁](references/style-system.md#版式多样性门禁) 形成 `sectionLayoutPlan`，再开始渲染或写入 Figma；不能先复制统一骨架再换标题和颜色。年度指标、截图或路线图只在材料真实存在且有助于叙事时使用。
 6. **生成内容**：普通进展使用“动作 → 产出 → 证据 → 意义”；B 端验证使用“问题 → 根因 → 规则 → 复验 → 沉淀”。下一步写清负责人、期限、交付物或验收口径。
 7. **生成 HTML**：读取 [HTML 输出规范](references/html-output.md)，优先使用 `scripts/render-report.mjs` 从结构化 JSON 生成页面，再运行 `scripts/validate-report.mjs`。
 8. **可选 Figma**：仅当输出模式包含 Figma 时读取 [Figma 输出规范](references/figma-output.md)。Figma 不可用只阻塞 Figma 阶段，不得否定已经完成的内容或 HTML。
