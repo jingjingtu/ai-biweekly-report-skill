@@ -1,6 +1,6 @@
 # 原始视觉参考索引
 
-本目录保存用户明确要求纳入公开 GitHub 仓库的 12 张原始 PNG。生成长卷前，按内容类型打开最接近的 2–4 张原图审查；不能只读取文字摘要，也不能把原图直接当作新报告的业务事实。
+本目录保存用户明确要求纳入公开 GitHub 仓库的 18 张原始 PNG。生成长卷前，按内容类型打开最接近的 2–4 张原图审查；不能只读取文字摘要，也不能把原图直接当作新报告的业务事实。
 
 ## 使用优先级
 
@@ -10,6 +10,19 @@
 4. 同时参考多张图时，提炼可组合的版式语法，不复制整套页面骨架。
 
 用户 B 端历史稿的稳定审美不变量是：大标题统一左对齐、章节内容共享固定左右边界、主绿负责结论、辅助色只做局部编码、大容器先建立层级、内部模块再变化。不能把“参考多张图”误解成每节标题方向和网格都不同。
+
+## 用户扩展视觉样例
+
+| 文件 | 原文件 | 尺寸 | 重点观察 |
+|---|---|---:|---|
+| [01-gradient-capability-sink.png](../assets/visual-references/user-style-extensions/01-gradient-capability-sink.png) | `codex-clipboard-0bdbc2b3...png` | 1402 × 1298 | 深色渐变表面、上游输入到能力沉淀的汇聚箭头、双栏能力分层 |
+| [02-gradient-delivery-flow.png](../assets/visual-references/user-style-extensions/02-gradient-delivery-flow.png) | `codex-clipboard-3110ed37...png` | 1014 × 1460 | 交付流、渐变功能块、视觉范围分区与清晰流程箭头 |
+| [03-branch-connector-logic.png](../assets/visual-references/user-style-extensions/03-branch-connector-logic.png) | `codex-clipboard-c6920535...png` | 1342 × 618 | 双路径分支、渐变连接线、中心化逻辑关系与低对比背景 |
+| [04-gradient-evidence-cards.png](../assets/visual-references/user-style-extensions/04-gradient-evidence-cards.png) | `codex-clipboard-0dbb9251...png` | 834 × 1400 | 深色证据卡、青/粉局部渐变、媒体载体与后续任务区分 |
+| [05-skill-coverage-network.png](../assets/visual-references/user-style-extensions/05-skill-coverage-network.png) | `codex-clipboard-8a74fadd...png` | 1062 × 1610 | 业务节点到中心能力的汇聚网络、主绿与青色分层、指标带 |
+| [06-timeline-skill-cluster.png](../assets/visual-references/user-style-extensions/06-timeline-skill-cluster.png) | `codex-clipboard-31665096...png` | 970 × 1278 | 阶段时间轴、色彩编码、中心 Skill 聚类与层级留白 |
+
+这些图用于提炼低对比渐变、分层表面、流程/时间轴/分支连接与粉色辅助编码。不得复制其中的文案、人物、媒体资产、品牌或案例数字；B 端汇报不使用红色。
 
 ## 其他团队视觉样式参考
 

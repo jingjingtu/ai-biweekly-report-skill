@@ -24,7 +24,13 @@ const visualReferences = [
   ['assets/visual-references/b-end-history/04-skill-architecture.png', 1920, 7189],
   ['assets/visual-references/b-end-history/05-monthly-validation.png', 1920, 13327],
   ['assets/visual-references/b-end-history/06-cross-platform.png', 1920, 11038],
-  ['assets/visual-references/b-end-history/07-content-area.png', 1920, 12841]
+  ['assets/visual-references/b-end-history/07-content-area.png', 1920, 12841],
+  ['assets/visual-references/user-style-extensions/01-gradient-capability-sink.png', 1402, 1298],
+  ['assets/visual-references/user-style-extensions/02-gradient-delivery-flow.png', 1014, 1460],
+  ['assets/visual-references/user-style-extensions/03-branch-connector-logic.png', 1342, 618],
+  ['assets/visual-references/user-style-extensions/04-gradient-evidence-cards.png', 834, 1400],
+  ['assets/visual-references/user-style-extensions/05-skill-coverage-network.png', 1062, 1610],
+  ['assets/visual-references/user-style-extensions/06-timeline-skill-cluster.png', 970, 1278]
 ];
 
 function readPngDimensions(filePath) {
