@@ -2,7 +2,7 @@ interface:
   display_name: "AI 双周会汇报"
   short_description: "把 AI 项目变化、证据、决策和下一步整理成双周会汇报"
   brand_color: "#00F58A"
-  default_prompt: "使用 $ai-biweekly-report 将这份计划、进展和证据整理成可验证的 HTML 双周会汇报。"
+  default_prompt: "使用 $ai-biweekly-report 按 qifu-figma-editable-slides 预设，将这份计划、进展和证据整理为 Figma 原生可编辑的单一连续根画板双周会汇报。"
 
 policy:
   allow_implicit_invocation: true

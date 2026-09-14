@@ -1,6 +1,6 @@
 ---
 name: ai-biweekly-report
-description: Create Chinese AI design-team biweekly reports from plans, progress, evidence, risks, decisions, and next actions. Use for report outlines, fixed 1920x1080 HTML slides, 1920px long-scroll reports, or editable Figma-ready plans; do not trigger for generic status prose or unrelated presentations.
+description: Create Chinese AI design-team biweekly reports from plans, progress, evidence, risks, decisions, and next actions. Use for report outlines, fixed 1920x1080 HTML slides, 1920px long-scroll reports, or a single continuous editable Figma root artboard — trigger on 画板 / Figma 画板 / 根画板 / 连续画布 / Figma 可编辑 Frame / 不要 HTML 成品, and on the qifu biweekly preset (qifu-figma-editable-slides); do not trigger for generic status prose or unrelated presentations.
 ---
 
 # AI 双周会设计汇报
@@ -22,6 +22,14 @@ description: Create Chinese AI design-team biweekly reports from plans, progress
 
 - `slides`：默认；独立 1920 × 1080 页面。
 - `long-scroll`：用户指定长图、长卷、网页式汇报，或明确要求匹配本 Skill 的标准样例时使用；宽度 1920px，高度随章节增长。
+
+## 奇富 Figma 可编辑画板预设
+
+当用户说“按我的双周会预设”、`qifu-figma-editable-slides`，或要求“Figma 画板 / 根画板 / 连续画布 / Figma 可编辑 Frame / 不要 HTML 成品”时，必须先读取 [奇富 Figma 可编辑画板预设](references/qifu-figma-editable-slides.md) 再动手，不得用本文件摘要代替预设内容。该预设优先于本 Skill 的默认 HTML 输出。
+
+画布形态固定为**单一连续根画板**：`format: long-scroll`，根 Frame 宽 1920px、纵向 Auto Layout，所有章节直接位于根 Frame 内；不得拆成多个并列的 `1920 × 1080` 独立画板。只有用户明确要求“分页 / PPT 式分页”时才改用 `slides`，明确要求 HTML 时才回到 HTML 输出。
+
+与 `figma-ai-biweekly-report` 的分工：两者画布形态一致，均为单一连续根画板。本 Skill 负责内容逻辑、结构化输入（`narrativeMode`、证据纪律、`sampleArchetype`）与版式规划；Figma 原生节点构建、视觉语言与节点 QA 由 `figma-ai-biweekly-report` 承担。同时命中时，内容侧以本 Skill 为准、节点结构以 `figma-ai-biweekly-report` 为准，一次任务只产出一张根画板。
 
 ## 输入与事实纪律
 
